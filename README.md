@@ -13,14 +13,13 @@ An attempt is made to merge both changes back to `master`.
   the `union` merge driver by adding a corresponding entry to `.gitattributes`
 
 - [`demo_hub.sh`](demo_hub.sh) interacts with GitHub (requires
-  [`hub`](http://hub.github.com/)) and opens two pull requests in a
+  [`hub`](http://hub.github.com/)) and opens and merges two pull requests in a
   new repo named `demo_hub`
 
 The first example fails by leaving a merge conflict to be resolved by the user.
 The second example succeeds: The `NEWS` file contains two new entries from the
 branches merged back to `master`.
-Unfortunately, GitHub does not seem to support per-file merge drivers:
-In the third example, after manually merging the first pull request (say, `a`),
-the second pull request cannot be merged using the GitHub web page.
-However, the changes from `master` can now be merged via command line back to
-`b`, and the merge happens without conflicts.
+In the third example, GitHub pull requests are merged via
+`hub merge PULLREQ_URL`.
+This also works without conflicts, in contrast to the "Merge" button on GitHub
+which will be disabled when trying to merge the second pull request.
