@@ -33,7 +33,7 @@ git add $NEWS
 git commit -m "added contents from a"
 git push -u --all
 
-hub pull-request -m "merge added contents from a"
+PULLREQ_A_URL=$(hub pull-request -m "merge added contents from a")
 
 git checkout -b b master
 echo "Contents from b" >> $NEWS
@@ -41,7 +41,8 @@ git add $NEWS
 git commit -m "added contents from b"
 git push -u --all
 
-hub pull-request -m "merge added contents from b"
+PULLREQ_B_URL=$(hub pull-request -m "merge added contents from b")
 
 git checkout master
-
+hub merge $PULLREQ_A_URL
+hub merge $PULLREQ_B_URL
